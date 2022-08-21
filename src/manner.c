@@ -1,10 +1,11 @@
+// Copyright (c) 2022 Jaskaran Veer Singh
+// MIT License
+
 #include<ncurses.h>
+#include<stdlib.h>
 
 int main()
 {
 	initscr();			        /* Start curses mode 		  */
-	printw("Hello World !!!");	/* Print Hello World		  */
-	refresh();			        /* Print it on to the real screen */
-	getch();			        /* Wait for user input */
 	endwin();			        /* End curses mode		  */
 }
