@@ -8,8 +8,8 @@
 
 typedef enum win_type {
     TYPE_MANPAGER,
-    TYPE_MANTREE
-    // will probably add a search box later too
+    TYPE_MANTREE,
+    TYPE_MANBAR
 } win_type;
 
 typedef struct manner_box {
@@ -21,6 +21,7 @@ typedef struct manner_box {
 
 typedef manner_box manpager_box;
 typedef manner_box mantree_box;
+typedef manner_box manbar_box;
 
 typedef struct window {
     WINDOW* win;

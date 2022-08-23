@@ -14,17 +14,26 @@ void calculate_win_parameters(WINDOW* stdscr, manner_box* b, win_type t)
     switch (t)
     {
     case TYPE_MANPAGER:
-        b->height = (b->height == -1) ? y : b->height;
+        b->height = (b->height == -1) ? y - DEFAULT_MANBAR_HEIGHT : b->height;
         b->width = (b->width == -1 ) ? x - DEFAULT_MANTREE_WIDTH : b->width;
         b->startx = (b->startx == -1) ? 0 : b->startx;
         b->starty = (b->starty == -1) ? 0 : b->starty;
         break;
     
     case TYPE_MANTREE:
-        b->height = (b->height == -1) ? y : b->height;
+        b->height = (b->height == -1) ? y - DEFAULT_MANBAR_HEIGHT: b->height;
         b->width = (b->width == -1 ) ? x/2 : b->width;
         b->startx = (b->startx == -1) ? x - DEFAULT_MANTREE_WIDTH: b->startx;
         b->starty = (b->starty == -1) ? 0 : b->starty;
+        break;
+     
+    case TYPE_MANBAR:
+        b->height = (b->height == -1) ? 2 : b->height;
+        b->width = (b->width == -1 ) ? x : b->width;
+        b->startx = (b->startx == -1) ? 0 : b->startx;
+        b->starty = (b->starty == -1) ? y - DEFAULT_MANBAR_HEIGHT : b->starty;
+        break;
+
     default:
         break;
     }    
@@ -39,13 +48,17 @@ window *create_win(WINDOW* stdscr, manner_box* b, win_type t)
         break;
     case TYPE_MANTREE:
         calculate_win_parameters(stdscr, b, TYPE_MANTREE);
+        break;
+    case TYPE_MANBAR:
+        calculate_win_parameters(stdscr, b, TYPE_MANBAR);
+        break;
     default:
         break;
     }
     
     window* w = (window*) malloc(sizeof(window));
     w->win = subwin(stdscr, b->height, b->width, b->starty, b->startx);
-    box(w->win, 0 , 0);
+    box(w->win, 0, 0);
     wrefresh(w->win);
 
     return w;

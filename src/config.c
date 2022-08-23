@@ -17,6 +17,11 @@ config* init_config() {
     cfg->mantree.starty = DEFAULT_MANTREE_STARTY;
     cfg->mantree.startx = DEFAULT_MANTREE_STARTX;
 
+    cfg->manbar.height = DEFAULT_MANBAR_HEIGHT;
+    cfg->manbar.width = DEFAULT_MANBAR_WIDTH;
+    cfg->manbar.starty = DEFAULT_MANBAR_STARTY;
+    cfg->manbar.startx = DEFAULT_MANBAR_STARTX;
+    
     return cfg;
 }
 

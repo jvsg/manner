@@ -21,21 +21,24 @@ void cleanup(config* cfg, WINDOW** windows, int n)
 int main()
 {
 	config* cfg = init_config();
-	window *manpager, *mantree;
+	window *manpager, *mantree, *manbar;
 	window** windows = malloc(sizeof(window*) * 2);
 
 	initscr();
 
 	manpager = create_win(stdscr, &cfg->manpager, TYPE_MANPAGER);
 	mantree = create_win(stdscr, &cfg->mantree, TYPE_MANTREE);
-	
+	manbar = create_win(stdscr, &cfg->manbar, TYPE_MANBAR);
+
 	windows[0] = manpager;
 	windows[1] = mantree;
+	windows[2] = manbar;
 
 	wrefresh(manpager->win);	
 	wrefresh(mantree->win);	
+	wrefresh(manbar->win);
 	
 	getch();
 
-	cleanup(cfg, windows, 2);
+	cleanup(cfg, windows, 3);
 }

@@ -17,10 +17,15 @@
 #define DEFAULT_MANTREE_STARTX -1
 #define DEFAULT_MANTREE_STARTY 0
 
+#define DEFAULT_MANBAR_HEIGHT 2
+#define DEFAULT_MANBAR_WIDTH -1
+#define DEFAULT_MANBAR_STARTX 0
+#define DEFAULT_MANBAR_STARTY -1
 
 typedef struct config {
     manpager_box manpager;
     mantree_box mantree;
+    manbar_box manbar;
 } config;
 
 config* init_config();
